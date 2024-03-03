@@ -13,7 +13,7 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 ## İçindekiler
 - [Giriş](#giris)
 - [Özellikler](#özellikler)
-- [Kullanılan Teknolojiler](#technologies-used)
+- [Kullanılan Teknolojiler](#kullanılan-teknolojiler)
 
 ## Giriş
 Portföyüm, çalışmalarımı, becerilerimi ve başarılarımı sergilemek için çevrimiçi bir portföy görevi gören bir REACT uygulamasıdır. Geçmişime genel bir bakış sağlar, projelerimi görüntüler ve benimle iletişim kurmanın bir yolunu sunar.

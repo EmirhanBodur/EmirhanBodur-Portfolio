@@ -3,7 +3,7 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 
 ### Weblink: [WebSite](https://emirhanbodur.dev)
 
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/üst.png"/>
+<img width="450px;" src="[https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/üst.png](https://raw.githubusercontent.com/EmirhanBodur/EmirhanBodur-Portfolio/master/src/ımages/üst.png)"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/skills.png"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/deneyim.png"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/projelerim.png"/>
@@ -11,7 +11,7 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/iletisim.png"/>
 
 ## İçindekiler
-- [Giriş](#giris)
+- [Giriş](#giriş)
 - [Özellikler](#özellikler)
 - [Kullanılan Teknolojiler](#kullanılan-teknolojiler)
 

@@ -31,6 +31,7 @@ const ProjectDetails = ({ openModal, setOpenModal }) => {
                             top: "10px",
                             right: "20px",
                             cursor: "pointer",
+                            color: 'white',
                         }}
                         onClick={() => setOpenModal({ state: false, project: null })}
                     />
@@ -63,8 +64,8 @@ const ProjectDetails = ({ openModal, setOpenModal }) => {
                         </>
                     )}
                     <ButtonGroup>
-                        <Button dull href={project?.github} target='new'>View Code</Button>
-                        <Button href={project?.webapp} target='new'>View Live App</Button>
+                        <Button dull href={project?.github} target='new'>Kodu İncele</Button>
+                        <Button href={project?.webapp} target='new'>Siteyi İncele</Button>
                     </ButtonGroup>
                 </Wrapper>
             </Container>

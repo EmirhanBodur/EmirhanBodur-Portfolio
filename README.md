@@ -12,7 +12,7 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 
 ## İçindekiler
 - [Giriş](#giris)
-- [Özellikler](#features)
+- [Özellikler](#özellikler)
 - [Kullanılan Teknolojiler](#technologies-used)
 
 ## Giriş

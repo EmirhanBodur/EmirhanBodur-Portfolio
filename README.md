@@ -10,8 +10,8 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/eğitim.png"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/iletisim.png"/>
 
-## Table of Contents
-- [Giriş](#introduction)
+## İçindekiler
+- [Giriş](#giris)
 - [Özellikler](#features)
 - [Kullanılan Teknolojiler](#technologies-used)
 

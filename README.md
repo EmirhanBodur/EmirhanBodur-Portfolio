@@ -8,7 +8,7 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 <img width="450px;" src="./src/ımages/deneyim.png"/>
 <img width="450px;" src="./src/ımages/projelerim.png"/>
 <img width="450px;" src="./src/ımages/eğitim.png"/>
-<img width="450px;" src="./src/ımages/iletisim.png"/>](url)
+<img width="450px;" src="./src/ımages/iletisim.png"/>]
 
 ## İçindekiler
 - [Giriş](#giriş)

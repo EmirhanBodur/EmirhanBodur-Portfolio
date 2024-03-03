@@ -2,13 +2,13 @@
 Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerimi, projelerimi ve deneyimlerimi sergiliyor.
 
 ### Weblink: [WebSite](https://emirhanbodur.dev)
-
+[
 <img width="450px;" src="[https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/üst.png](https://raw.githubusercontent.com/EmirhanBodur/EmirhanBodur-Portfolio/master/src/ımages/üst.png)"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/skills.png"/>
+<img width="450px;" src="raw.githubusercontent.com/EmirhanBodur/EmirhanBodur-Portfolio/master/src/ımages/üst.png)"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/deneyim.png"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/projelerim.png"/>
 <img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/eğitim.png"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/iletisim.png"/>
+<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/iletisim.png"/>](url)
 
 ## İçindekiler
 - [Giriş](#giriş)

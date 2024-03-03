@@ -5,10 +5,10 @@ Portföyüme hoş geldiniz! Bu proje, bir Front-End Developer olarak becerilerim
 [
 <img width="450px;" src="./src/ımages/üst.png"/>
 <img width="450px;" src="raw.githubusercontent.com/EmirhanBodur/EmirhanBodur-Portfolio/master/src/ımages/üst.png)"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/deneyim.png"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/projelerim.png"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/eğitim.png"/>
-<img width="450px;" src="https://github.com/EmirhanBodur/EmirhanBodur-Portfolio/tree/master/src/ımages/iletisim.png"/>](url)
+<img width="450px;" src="./src/ımages/deneyim.png"/>
+<img width="450px;" src="./src/ımages/projelerim.png"/>
+<img width="450px;" src="./src/ımages/eğitim.png"/>
+<img width="450px;" src="./src/ımages/iletisim.png"/>](url)
 
 ## İçindekiler
 - [Giriş](#giriş)

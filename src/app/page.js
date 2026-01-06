@@ -1,103 +1,154 @@
-import Image from "next/image";
+// src/app/page.jsx
+import React from "react";
+import Link from "next/link";
+import { Briefcase, Wrench, GraduationCap } from "lucide-react";
 
-export default function Home() {
+import SocialLinks from "./components/SocialLinks";
+import ExperienceCard from "./components/ExperienceCard";
+import SkillsTabs from "./components/SkillsTabs";
+import EducationCard from "./components/EducationCard";
+import ProjectsSectionClient from "./components/ProjectsSectionClient";
+
+// Contentful helpers (server-only)
+import {
+  getExperienceData,
+  getAboutData,
+  RichText,
+  getSkills,
+  getEducationData,
+} from "../lib/contentful";
+
+// (Statik kısım: yalnız skills & education mock verileri burada kalıyor)
+import { skillsData, education } from "./data/mockData";
+
+export default async function Home() {
+  // Contentful’dan veriler
+  const about = await getAboutData();
+  const experiencesData = await getExperienceData();
+  // 3. Veriyi burada çekiyoruz
+  const skills = await getSkills();
+  const education = await getEducationData();
+
+  // RichText alanı, farklı şema adlarına toleranslı şekilde okunuyor
+  const aboutContent =
+    about?.body || // güvenli sürümde normalize edilmiş alan
+    about?.fields?.icerik || // TR alan adı kullanıyorsan
+    about?.fields?.body || // yaygın alan adı
+    null;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Giriş Bölümü */}
+      <section className="mb-16">
+        <h1 className="text-4xl font-bold text-slate-100 mb-4">Merhaba! 👋</h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Statik metin yerine Contentful RichText içeriği */}
+        <div className="prose prose-invert prose-lg text-slate-400 max-w-2xl">
+          {aboutContent ? (
+            <RichText content={aboutContent} />
+          ) : (
+            <p>
+              Hakkımda içeriği şu an yüklenemedi. Lütfen daha sonra tekrar
+              deneyin veya{" "}
+              <Link
+                href="/about"
+                className="text-amber-400 hover:text-amber-300"
+              >
+                Hakkımda
+              </Link>{" "}
+              sayfasını ziyaret edin.
+            </p>
+          )}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <div className="mt-6 flex items-center gap-4">
+          <span className="text-sm font-medium">Sosyal Medya:</span>
+          <SocialLinks />
+        </div>
+
+        <div className="mt-8">
+          <Link
+            href="/about"
+            className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300"
+          >
+            Daha Fazlasını Oku →
+          </Link>
+        </div>
+      </section>
+
+      {/* Öne Çıkan Projeler */}
+      <section className="mb-16">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-2 whitespace-nowrap uppercase">
+            <Briefcase className="text-amber-400" />
+            Projeler
+          </h2>
+          <Link
+            href="/projects"
+            className="hidden md:inline-flex text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300"
+          >
+            See All →
+          </Link>
+        </div>
+
+        <ProjectsSectionClient />
+
+        <div className="mt-4 text-right md:hidden">
+          <Link
+            href="/projects"
+            className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300"
+          >
+            See All →
+          </Link>
+        </div>
+      </section>
+
+      {/* Deneyim Bölümü */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
+          <Briefcase className="text-amber-400" />
+          Deneyim
+        </h2>
+
+        <div>
+          {Array.isArray(experiencesData) && experiencesData.length > 0 ? (
+            experiencesData.map((exp, i) => (
+              <ExperienceCard
+                key={i}
+                role={exp.role}
+                company={exp.company}
+                duration={exp.duration}
+                // Description RichText ise, bileşen içinde render ediyoruz
+                description={
+                  exp.description ? <RichText content={exp.description} /> : ""
+                }
+              />
+            ))
+          ) : (
+            <p className="text-slate-400">Şu an deneyim verisi bulunamadı.</p>
+          )}
+        </div>
+      </section>
+
+      {/* Yetenekler Bölümü */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
+          <Wrench className="text-amber-400" />
+          Yetenekler
+        </h2>
+        <SkillsTabs skills={skills} />
+      </section>
+
+      {/* Eğitim Bölümü */}
+      <section>
+        <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
+          <GraduationCap className="text-amber-400" />
+          Eğitim
+        </h2>
+        <div>
+          <EducationCard educationList={education} />
+        </div>
+      </section>
+    </>
   );
 }

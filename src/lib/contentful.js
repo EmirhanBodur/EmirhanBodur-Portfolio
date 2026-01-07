@@ -97,7 +97,7 @@ export async function getSocialLinks() {
 
     return {
       github: item.fields.github,
-      linkedin: item.fields.linkedin,
+      linkedIn: item.fields.linkedIn,
       twitter: item.fields.twitter,
       mail: item.fields.mail || item.fields.email,
       website: item.fields.website,

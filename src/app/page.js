@@ -70,7 +70,7 @@ export default async function Home() {
             href="/projects"
             className="hidden md:inline-flex text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300"
           >
-            See All →
+            Tümünü Gör →
           </Link>
         </div>
 
@@ -81,7 +81,7 @@ export default async function Home() {
             href="/projects"
             className="text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors duration-300"
           >
-            See All →
+            Tümünü Gör →
           </Link>
         </div>
       </section>

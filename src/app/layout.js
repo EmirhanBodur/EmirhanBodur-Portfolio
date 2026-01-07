@@ -7,13 +7,63 @@ import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata = {
-  title: "Emirhan Bodur | Portfolio",
-  description: "Emirhan Bodur - Kişisel Portfolyo Sitesi",
+  metadataBase: new URL("https://emirhanbodur.dev"),
+
+  title: {
+    default: "Emirhan Bodur | Fullstack Developer",
+    template: "%s | Emirhan Bodur",
+  },
+
+  description:
+    "Modern web ve mobil uygulamalar geliştiren Fullstack Developer. Next.js, React, Node.js ve modern teknolojilerle geliştirdiğim projelerimi inceleyin.",
+
+  keywords: [
+    "Emirhan Bodur",
+    "Fullstack Developer",
+    "Yazılım Geliştirici",
+    "Web Developer",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Portfolio",
+    "emirhanbodur.dev",
+  ],
+
+  authors: [{ name: "Emirhan Bodur", url: "https://emirhanbodur.dev" }],
+
+  openGraph: {
+    title: "Emirhan Bodur | Fullstack Developer",
+    description:
+      "Modern web teknolojileriyle geliştirdiğim projeler ve yeteneklerim.",
+    url: "https://emirhanbodur.dev",
+    siteName: "Emirhan Bodur Portfolio",
+    locale: "tr_TR",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Emirhan Bodur | Fullstack Developer",
+    description: "Projelerimi ve yeteneklerimi inceleyin.",
+    creator: "@emirhanndev",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="tr">
       <head>
         <link
           rel="stylesheet"

@@ -1,9 +1,9 @@
-"use client"; // Bu sayfa, client-side hook kullandığı için bu gerekli
+"use client";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import ProjectCard from "../components/ProjectCard";
-import { useGitHub } from "../hooks/useGitHub";
+import ProjectCard from "../../components/ui/ProjectCard";
+import { useGitHub } from "../../hooks/useGitHub";
 
 const AllProjectsPage = () => {
   const { projects, loading, error } = useGitHub();

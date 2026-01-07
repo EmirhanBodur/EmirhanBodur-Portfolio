@@ -1,10 +1,8 @@
 import "server-only";
 import { createClient } from "contentful";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 // --- 1. AYARLAR ---
-// .env.local dosyasındaki isimlendirmeye uyumlu hale getirdim
-const space = process.env.CONTENTFUL_SPACE_ID; // .env.local'daki isme dikkat
+const space = process.env.CONTENTFUL_SPACE_ID;
 const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 if (!space || !accessToken) {
@@ -16,25 +14,19 @@ if (!space || !accessToken) {
 const client = createClient({ space, accessToken });
 
 // --- 2. YARDIMCI FONKSİYONLAR ---
-
 function getAssetUrl(asset) {
   const url = asset?.fields?.file?.url;
   if (!url) return null;
   return url.startsWith("http") ? url : `https:${url}`;
 }
 
-export function RichText({ content, options }) {
-  if (!content) return null;
-  return <>{documentToReactComponents(content, options)}</>;
-}
-
 // --- 3. VERİ ÇEKME FONKSİYONLARI ---
 
-// ★ HAKKIMDA (Düzeltildi: 'icerik' alanını okuyor)
+// ★ HAKKIMDA
 export async function getAboutData() {
   try {
     const response = await client.getEntries({
-      content_type: "hakkimda", // Contentful ID (küçük harf)
+      content_type: "hakkimda",
       limit: 1,
     });
 
@@ -42,9 +34,7 @@ export async function getAboutData() {
     if (!item) return null;
 
     return {
-      // BURASI ÇOK ÖNEMLİ: Contentful'daki alan adın "icerik" olduğu için bunu eşleştirdik
-      body: item.fields.icerik,
-
+      body: item.fields.icerik, // Rich Text verisi (JSON formatında)
       title: item.fields.title || item.fields.baslik || "Hakkımda",
       subtitle: item.fields.subtitle,
       avatarUrl: getAssetUrl(item.fields.avatar || item.fields.photo),
@@ -78,7 +68,6 @@ export async function getEducationData() {
   try {
     const response = await client.getEntries({
       content_type: "education",
-      // Güncelleme tarihine göre sırala (En son düzenlediğin en üstte çıksın)
       order: "-sys.updatedAt",
     });
 
@@ -95,7 +84,7 @@ export async function getEducationData() {
   }
 }
 
-// ★ SOSYAL MEDYA LİNKLERİ (İstediğin ekleme burası)
+// ★ SOSYAL MEDYA
 export async function getSocialLinks() {
   try {
     const response = await client.getEntries({
@@ -106,7 +95,6 @@ export async function getSocialLinks() {
     const item = response.items[0];
     if (!item) return null;
 
-    // Sadece gerekli alanları döndür
     return {
       github: item.fields.github,
       linkedin: item.fields.linkedin,
@@ -120,7 +108,7 @@ export async function getSocialLinks() {
   }
 }
 
-// ★ DENEYİM (Experience)
+// ★ DENEYİM
 export async function getExperienceData() {
   try {
     const response = await client.getEntries({

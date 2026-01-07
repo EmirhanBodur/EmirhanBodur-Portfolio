@@ -1,8 +1,7 @@
-// src/app/components/ProjectsSectionClient.jsx
 "use client";
 
-import ProjectCard from "./ProjectCard";
-import { useGitHub } from "../hooks/useGitHub";
+import ProjectCard from "@/components/ui/ProjectCard";
+import { useGitHub } from "@/hooks/useGitHub";
 
 export default function ProjectsSectionClient() {
   const { projects, loading, error } = useGitHub();

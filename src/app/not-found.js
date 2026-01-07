@@ -1,21 +1,30 @@
-import React from "react";
+import Link from "next/link";
+import { FileQuestion, Home } from "lucide-react";
 
-const NotFoundPage = ({ navigateTo }) => {
+export default function NotFound() {
   return (
-    <section className="flex flex-col items-center justify-center text-center py-20">
-      <h1 className="text-8xl md:text-9xl font-bold text-amber-500">404</h1>
-      <p className="text-2xl text-slate-400 my-4">¯\_(ツ)_/¯</p>
-      <h2 className="text-3xl font-semibold text-slate-300 mb-8">
-        Page Not Found
-      </h2>
-      <button
-        onClick={() => navigateTo("home")}
-        className="text-amber-400 hover:text-amber-300 transition-colors duration-300 border-b border-amber-400 hover:border-amber-300 pb-1"
-      >
-        Go back home
-      </button>
-    </section>
-  );
-};
+    <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
+      <div className="bg-slate-800 p-6 rounded-full animate-pulse">
+        <FileQuestion size={64} className="text-amber-500" />
+      </div>
 
-export default NotFoundPage;
+      <h2 className="text-3xl font-bold text-slate-100">
+        Sayfa Bulunamadı veya Hasarlı
+      </h2>
+
+      <p className="text-slate-400 max-w-md mx-auto">
+        Aradığın sayfa ya silinmiş ya da hiç var olmamış. Bu hata çıktığında
+        aşağıdaki iletişim formundan bana bildirirsen benim gelişmemde yardımcı
+        olursun!
+      </p>
+
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 transition-colors"
+      >
+        <Home size={20} />
+        Ana Sayfaya Dön
+      </Link>
+    </div>
+  );
+}

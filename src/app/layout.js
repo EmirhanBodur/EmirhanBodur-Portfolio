@@ -1,8 +1,10 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ContactForm from "./components/ContactForm";
+import React from "react";
 import { Mail } from "lucide-react";
-import "./globals.css"; // Tailwind stillerini import et
+import "./globals.css";
+
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata = {
   title: "Emirhan Bodur | Portfolyo",
@@ -17,26 +19,32 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
         />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="true"
         />
+
         <link
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
+
         <style>{`
-          body { 
-            font-family: 'IBM Plex Mono', monospace; 
+          body {
+            font-family: 'IBM Plex Mono', monospace;
           }
         `}</style>
       </head>
+
       <body className="bg-slate-900 text-slate-300 antialiased">
         <div className="max-w-3xl mx-auto px-6 py-12">
-          {/* DİKKAT: Header'a artık hiçbir fonksiyon veya prop geçirmiyoruz */}
+          {/* Header */}
           <Header />
+
           <hr className="border-t-2 border-amber-500 mt-4 mb-12" />
 
           <main>{children}</main>
@@ -46,6 +54,7 @@ export default function RootLayout({ children }) {
               <Mail className="text-amber-500" />
               İletişim
             </h2>
+
             <ContactForm />
           </section>
 

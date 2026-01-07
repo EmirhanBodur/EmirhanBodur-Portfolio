@@ -1,48 +1,32 @@
-// src/app/page.jsx
 import React from "react";
 import Link from "next/link";
 import { Briefcase, Wrench, GraduationCap } from "lucide-react";
-
-import SocialLinks from "./components/SocialLinks";
-import ExperienceCard from "./components/ExperienceCard";
-import SkillsTabs from "./components/SkillsTabs";
-import EducationCard from "./components/EducationCard";
-import ProjectsSectionClient from "./components/ProjectsSectionClient";
-
-// Contentful helpers (server-only)
+import SocialLinks from "@/components/ui/SocialLinks";
+import ExperienceCard from "@/components/ui/ExperienceCard";
+import EducationCard from "@/components/ui/EducationCard";
+import Skills from "@/components/sections/Skills";
+import Projects from "@/components/sections/Projects";
+import RichText from "@/components/ui/RichText";
 import {
   getExperienceData,
   getAboutData,
-  RichText,
   getSkills,
   getEducationData,
-} from "../lib/contentful";
-
-// (Statik kısım: yalnız skills & education mock verileri burada kalıyor)
-import { skillsData, education } from "./data/mockData";
+} from "@/lib/contentful";
 
 export default async function Home() {
-  // Contentful’dan veriler
   const about = await getAboutData();
   const experiencesData = await getExperienceData();
-  // 3. Veriyi burada çekiyoruz
   const skills = await getSkills();
-  const education = await getEducationData();
-
-  // RichText alanı, farklı şema adlarına toleranslı şekilde okunuyor
+  const educationData = await getEducationData();
   const aboutContent =
-    about?.body || // güvenli sürümde normalize edilmiş alan
-    about?.fields?.icerik || // TR alan adı kullanıyorsan
-    about?.fields?.body || // yaygın alan adı
-    null;
+    about?.body || about?.fields?.icerik || about?.fields?.body || null;
 
   return (
     <>
-      {/* Giriş Bölümü */}
       <section className="mb-16">
         <h1 className="text-4xl font-bold text-slate-100 mb-4">Merhaba! 👋</h1>
 
-        {/* Statik metin yerine Contentful RichText içeriği */}
         <div className="prose prose-invert prose-lg text-slate-400 max-w-2xl">
           {aboutContent ? (
             <RichText content={aboutContent} />
@@ -76,7 +60,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Öne Çıkan Projeler */}
       <section className="mb-16">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-slate-100 flex items-center gap-2 whitespace-nowrap uppercase">
@@ -91,7 +74,7 @@ export default async function Home() {
           </Link>
         </div>
 
-        <ProjectsSectionClient />
+        <Projects />
 
         <div className="mt-4 text-right md:hidden">
           <Link
@@ -103,7 +86,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Deneyim Bölümü */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
           <Briefcase className="text-amber-400" />
@@ -118,7 +100,6 @@ export default async function Home() {
                 role={exp.role}
                 company={exp.company}
                 duration={exp.duration}
-                // Description RichText ise, bileşen içinde render ediyoruz
                 description={
                   exp.description ? <RichText content={exp.description} /> : ""
                 }
@@ -130,23 +111,21 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Yetenekler Bölümü */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
           <Wrench className="text-amber-400" />
           Yetenekler
         </h2>
-        <SkillsTabs skills={skills} />
+        <Skills skills={skills} />
       </section>
 
-      {/* Eğitim Bölümü */}
       <section>
         <h2 className="text-2xl font-bold text-slate-100 mb-6 flex items-center gap-2 uppercase">
           <GraduationCap className="text-amber-400" />
           Eğitim
         </h2>
         <div>
-          <EducationCard educationList={education} />
+          <EducationCard educationList={educationData} />
         </div>
       </section>
     </>

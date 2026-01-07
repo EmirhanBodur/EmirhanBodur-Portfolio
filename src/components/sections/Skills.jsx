@@ -34,8 +34,6 @@ import {
 } from "react-icons/si";
 import { TbBrandGithub } from "react-icons/tb";
 
-// --- İKON EŞLEŞTİRME SÖZLÜĞÜ ---
-// Contentful'da 'iconKey' alanına soldaki küçük kelimeyi yazacaksın.
 const iconMap = {
   // Frontend
   react: <FaReact size={40} />,
@@ -76,8 +74,7 @@ const iconMap = {
   postman: <SiPostman size={40} />,
 };
 
-const SkillsTabs = ({ skills = [] }) => {
-  // MockData'ndaki kategori sıralamasını ve isimlerini BURADA KORUYORUZ.
+const Skills = ({ skills = [] }) => {
   const categories = [
     "Frontend",
     "Backend",
@@ -87,17 +84,12 @@ const SkillsTabs = ({ skills = [] }) => {
     "Other Tools",
   ];
 
-  // Varsayılan olarak ilk kategori seçili gelsin
   const [activeTab, setActiveTab] = useState("Frontend");
 
-  // Contentful'dan gelen veriyi, o anki aktif sekmeye göre filtreliyoruz.
-  // Contentful'da "Category" alanına "Frontend", "Backend" gibi tam isimleri yazmalısın.
   const filteredSkills = skills.filter((skill) => skill.category === activeTab);
 
   return (
     <div className="w-full">
-      {/* --- SEKMELER (Tasarımın Bozulmadığı Yer) --- */}
-      {/* Buradaki CSS sınıfları senin mevcut tasarımına uyumlu hale getirildi */}
       <div className="flex flex-wrap gap-2 mb-8">
         {categories.map((cat) => (
           <button
@@ -106,7 +98,7 @@ const SkillsTabs = ({ skills = [] }) => {
             className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-300
               ${
                 activeTab === cat
-                  ? "bg-yellow-500 text-black" // Seçili Tab Rengi (Resimdeki turuncu/sarı)
+                  ? "bg-yellow-500 text-black"
                   : "bg-[#1f2937] text-gray-300 hover:bg-gray-700"
               } // Seçili Olmayan Tab Rengi
             `}
@@ -116,7 +108,6 @@ const SkillsTabs = ({ skills = [] }) => {
         ))}
       </div>
 
-      {/* --- İKONLAR ALANI --- */}
       <div className="bg-[#111827] p-6 rounded-xl border border-gray-800">
         <div className="flex flex-wrap gap-8">
           {filteredSkills.length > 0 ? (
@@ -125,15 +116,9 @@ const SkillsTabs = ({ skills = [] }) => {
                 key={index}
                 className="flex flex-col items-center gap-2 group cursor-pointer"
               >
-                {/* İkon */}
                 <div className="text-gray-400 group-hover:text-yellow-500 transition-colors duration-300">
-                  {/* Contentful'dan gelen 'iconKey'i map'ten buluyoruz */}
                   {iconMap[skill.iconKey] || <FaHtml5 size={40} />}
                 </div>
-
-                {/* Yetenek İsmi */}
-                {/* Tasarımda isimler görünmüyorsa burayı silebilirsin ama durması iyidir */}
-                {/* <span className="text-sm font-medium text-gray-500 group-hover:text-gray-300">{skill.name}</span> */}
               </div>
             ))
           ) : (
@@ -147,4 +132,4 @@ const SkillsTabs = ({ skills = [] }) => {
   );
 };
 
-export default SkillsTabs;
+export default Skills;

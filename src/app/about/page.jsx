@@ -1,10 +1,9 @@
-// src/app/about/page.jsx
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { getAboutData, RichText } from "@/lib/contentful"; // Yeni fonksiyon ve bileşeni import et
+import { getAboutData } from "@/lib/contentful";
+import RichText from "@/components/ui/RichText";
 
-// Hata durumunda gösterilecek olan bileşen
 const ErrorMessage = () => (
   <div className="bg-red-900/20 border border-red-700 rounded-lg p-4">
     <p className="font-bold text-red-400">⚠️ İçerik Yüklenemedi</p>

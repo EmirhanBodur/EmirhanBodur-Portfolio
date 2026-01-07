@@ -10,7 +10,6 @@ export async function POST(req) {
       return NextResponse.json({ error: "Eksik alan var." }, { status: 400 });
     }
 
-    // --- GMAIL AYARLARI ---
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -19,7 +18,6 @@ export async function POST(req) {
       },
     });
 
-    // --- GÜNCELLENMİŞ E-POSTA TASARIMI (DARK MODE) ---
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_TO,

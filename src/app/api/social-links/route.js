@@ -1,4 +1,3 @@
-// src/app/api/social-links/route.js
 import { NextResponse } from "next/server";
 import { createClient } from "contentful";
 

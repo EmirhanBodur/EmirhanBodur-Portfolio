@@ -1,19 +1,18 @@
-// src/app/components/Header.jsx
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Menu,
   X,
-  Home,
   Briefcase,
   Info,
-  ArrowUpRight,
-  Settings,
-  Globe,
   Github,
   Linkedin,
   Twitter,
+  ArrowUpRight,
+  Settings,
+  FileText,
+  Download,
 } from "lucide-react";
 
 const Header = () => {
@@ -35,24 +34,30 @@ const Header = () => {
   };
 
   const mainNavLinks = [
-    { name: "Home", href: "/", icon: <Home size={20} /> },
     { name: "Projeler", href: "/projects", icon: <Briefcase size={20} /> },
     { name: "Hakkımda", href: "/about", icon: <Info size={20} /> },
-    {
-      name: "Deneyim (404 Test)",
-      href: "/deneyim",
-      icon: <Briefcase size={20} />,
-    }, // 404 Testi için eklendi
   ];
 
   const onlineLinks = [
-    { name: "GitHub", url: "#", icon: <Github size={20} /> },
-    { name: "LinkedIn", url: "#", icon: <Linkedin size={20} /> },
-    { name: "Twitter", url: "#", icon: <Twitter size={20} /> },
+    {
+      name: "GitHub",
+      url: "https://github.com/kullaniciadi",
+      icon: <Github size={20} />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/kullaniciadi",
+      icon: <Linkedin size={20} />,
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com/kullaniciadi",
+      icon: <Twitter size={20} />,
+    },
   ];
 
   return (
-    <header className="flex justify-between items-center">
+    <header className="flex justify-between items-center relative z-50">
       <Link
         href="/"
         className={`text-xl font-bold text-amber-500 hover:text-amber-400 transition-opacity duration-300 z-50 ${
@@ -62,35 +67,28 @@ const Header = () => {
         Emirhan Bodur
       </Link>
 
-      {/* Desktop Nav */}
       <nav className="hidden md:flex items-center gap-6 text-slate-300">
-        <Link
-          href="/projects"
-          className="text-sm font-medium hover:text-amber-400 transition-colors duration-300"
+        {mainNavLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className="text-sm font-medium hover:text-amber-400 transition-colors duration-300"
+          >
+            {link.name}
+          </Link>
+        ))}
+
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-slate-900 bg-amber-500 rounded hover:bg-amber-400 transition-colors duration-300 transform hover:scale-105"
         >
-          Projeler
-        </Link>
-        <Link
-          href="/about"
-          className="text-sm font-medium hover:text-amber-400 transition-colors duration-300"
-        >
-          Hakkımda
-        </Link>
-        <Link
-          href="/deneyim"
-          className="text-sm font-medium hover:text-amber-400 transition-colors duration-300"
-        >
-          Deneyim (404 Test)
-        </Link>
-        <button
-          aria-label="Change Language"
-          className="hover:text-amber-400 transition-colors duration-300 font-bold text-sm tracking-widest"
-        >
-          EN
-        </button>
+          <FileText size={14} />
+          CV
+        </a>
       </nav>
 
-      {/* Mobile Hamburger Button */}
       <div className="md:hidden z-50">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -101,7 +99,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Backdrop */}
       {isMenuOpen && (
         <div
           className="md:hidden fixed inset-0 bg-black/60 z-30"
@@ -110,38 +107,35 @@ const Header = () => {
         ></div>
       )}
 
-      {/* Mobile Menu Panel */}
       <div
         className={`md:hidden fixed bottom-0 left-0 right-0 bg-slate-900 z-40 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-y-0" : "translate-y-full"
         } rounded-t-2xl border-t border-slate-800`}
       >
-        <div className="flex flex-col max-h-[75vh] p-6 pt-8 overflow-y-auto">
-          {/* Profile Section */}
-          <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col max-h-[85vh] p-6 pt-8 overflow-y-auto">
+          <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
-              <img
-                src="https://placehold.co/40x40/1e293b/f59e0b?text=EB"
-                alt="Profil"
-                className="rounded-full"
-              />
+              <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-amber-500 font-bold border border-slate-700">
+                EB
+              </div>
               <div>
                 <h2 className="font-bold text-white">Emirhan Bodur</h2>
                 <p className="text-sm text-slate-400">Full Stack Developer</p>
               </div>
             </div>
-            <div className="flex items-center gap-4 text-slate-400">
-              <button
-                aria-label="Change Language"
-                className="hover:text-amber-400 transition-colors duration-300 font-bold text-sm tracking-widest"
-              >
-                EN
-              </button>
-              <Settings size={20} />
-            </div>
           </div>
 
-          {/* Main Navigation */}
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleMenuClose}
+            className="flex items-center justify-center gap-2 w-full p-3 mb-6 bg-amber-500/10 border border-amber-500/50 text-amber-500 rounded-lg font-bold hover:bg-amber-500 hover:text-slate-900 transition-all"
+          >
+            <Download size={20} />
+            CV'yi Görüntüle
+          </a>
+
           <nav className="flex flex-col gap-2">
             {mainNavLinks.map((link) => (
               <Link
@@ -156,8 +150,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Online Links */}
-          <div className="mt-10">
+          <div className="mt-8">
             <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">
               Online
             </h3>
@@ -178,11 +171,6 @@ const Header = () => {
                 </a>
               ))}
             </div>
-          </div>
-
-          {/* Footer Status */}
-          <div className="mt-auto text-center text-sm text-slate-500 pt-6">
-            <p>● Müzik çalmıyor</p>
           </div>
         </div>
       </div>

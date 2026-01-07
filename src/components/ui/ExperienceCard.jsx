@@ -1,4 +1,3 @@
-// src/app/components/ExperienceCard.jsx
 import React from "react";
 
 const ExperienceCard = ({ role, company, duration, description }) => (
@@ -13,7 +12,6 @@ const ExperienceCard = ({ role, company, duration, description }) => (
       </p>
     </div>
 
-    {/* description JSX olabilir (RichText bileşeni ile) */}
     <div className="prose prose-invert prose-lg text-slate-400 max-w-2xl">
       {description}
     </div>

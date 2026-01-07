@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-// lucide-react kütüphanesi yüklü değilse: npm install lucide-react
+
 import { Send, Loader2 } from "lucide-react";
 
 const ContactForm = () => {
@@ -9,7 +9,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState(""); // 'loading', 'success', 'error'
+  const [status, setStatus] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
 
   const handleChange = (e) => {
@@ -23,7 +23,6 @@ const ContactForm = () => {
     setResponseMessage("");
 
     try {
-      // API'ye istek atıyoruz (Daha önce kurduğumuz Gmail rotası)
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,15 +34,13 @@ const ContactForm = () => {
       if (response.ok) {
         setStatus("success");
         setResponseMessage("Mesajınız başarıyla iletildi! ✅");
-        setFormData({ name: "", email: "", message: "" }); // Formu temizle
+        setFormData({ name: "", email: "", message: "" });
 
-        // İsteğe bağlı: 5 saniye sonra başarı mesajını kaldır
         setTimeout(() => {
           setStatus("");
           setResponseMessage("");
         }, 5000);
       } else {
-        // Backend'den gelen hata mesajını yakala (error veya message olabilir)
         throw new Error(data.error || data.message || "Bir hata oluştu.");
       }
     } catch (error) {

@@ -7,13 +7,13 @@ import Footer from "@/components/layout/Footer";
 import ContactForm from "@/components/sections/ContactForm";
 
 export const metadata = {
-  title: "Emirhan Bodur | Portfolyo",
+  title: "Emirhan Bodur | Portfolio",
   description: "Emirhan Bodur - Kişisel Portfolyo Sitesi",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="tr">
+    <html lang="en">
       <head>
         <link
           rel="stylesheet"

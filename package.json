@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.1.0",
+    "@vercel/analytics": "^1.6.1",
     "contentful": "^11.7.15",
     "dotenv": "^17.2.1",
     "lucide-react": "^0.539.0",
